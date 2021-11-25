@@ -1,5 +1,5 @@
 # Test Assignment for Nurture Labs
-[a workaround link](superheroadvisors/blob/main/assignment.md)
+[a workaround link](superheroadvisors/assignment.md)
 ___
 ## Advisor Assignment:
 > To  this assignment fun, I am making this a theme based advisor app
