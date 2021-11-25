@@ -18,7 +18,7 @@ def create_advisor(advisor: schemas.AdvisorCreate, db: Session = Depends(get_db)
     db.add(new_advisor)  # Add new entries to data base
     db.commit()  # Commit added changes else the data is not committed
     db.refresh(new_advisor) # Retrieve new post 
-    return  advisor.dict()
+    return  new_advisor
 
 # Get all advisors
 # @router.get('/{id}', response_model= schemas.UserOut)

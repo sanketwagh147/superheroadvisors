@@ -9,12 +9,17 @@ class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
 
-    class Config:
-        orm_mode = True
+
+
+
 
     
 class AdvisorOut(BaseModel):
+    id: int
     name : str # Optional for asignment
-    # created_at: datetime  # Optional for asignment
+    created_at: datetime  # Optional for asignment
     image_url: str
+
+    class Config:
+        orm_mode = True
 
