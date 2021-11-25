@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy_utils import URLType
 
 # revision identifiers, used by Alembic.
-revision = 'df00b775c124'
+revision = 'https://i.ibb.co/mtbGZyH/download.jpg'
 down_revision = None
 branch_labels = None
 depends_on = None
