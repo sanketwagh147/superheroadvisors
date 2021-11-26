@@ -2,7 +2,8 @@
 from pydantic import BaseModel, EmailStr 
 from datetime import datetime
 from typing import Optional
-from pydantic.types import conint
+
+# Advisor Schemas
 
 
 class AdvisorCreate(BaseModel):
@@ -19,5 +20,23 @@ class AdvisorOut(BaseModel):
     class Config:
         orm_mode = True
 
+# Admin Schemas Not required in assignment
+
 # class Admin(BaseModel):
 #     pass
+
+
+# User Schemas
+
+class UserLogin(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+    created_at: datetime  # optional for asignment
+
+class UserLoginOut(BaseModel):
+    id: int
+    token : str
+
+    class Config:  # converts to pydantic model 
+        orm_mode = True

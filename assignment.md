@@ -30,10 +30,10 @@ Method: POST
 ---------------------------Email    
 ---------------------------Password  
 ----------------Response:-  
----------------------------Body:  
+0--------------------Body:  
 ---------------------------JWT Authentication Token  
 ---------------------------User id  
-----------------Status-  
+---------------------Status-  
 ---------------------------200-OK if the request is successful  
 ---------------------------400-BAD-REQUEST if any of the above fields are missing  
 
@@ -45,10 +45,10 @@ POST
 ---------------------------Email  
 ---------------------------Password  
 ----------------Response:-  
----------------------------Body:  
+---------------------Body:  
 ---------------------------JWT Authentication Token  
 ---------------------------User id  
-----------------Status-  
+---------------------Status-  
 ---------------------------200-OK if the request is successful  
 ---------------------------400-BAD-REQUEST if any of the above fields are missing  
 ---------------------------Return 401-AUTHENTICATION-ERROR if the email/password combination was wrong  
@@ -60,12 +60,12 @@ GET
 ----------------Request:-  
 ---------------------------None  
 ----------------Response:-  
----------------------------Body:  
+---------------------Body:  
 ---------------------------An array of advisor objects with each object having  
 --------------------------------Advisor Name  
 --------------------------------Advisor Profile Pic  
 --------------------------------Advisor Id  
-----------------Status-  
+---------------------Status-  
 ---------------------------200-OK if the request is successful  
 
 > **API: Can book call with an advisor**  
@@ -74,9 +74,9 @@ Method: POST
 ----------------Request:-  
 ---------------------------Booking time (a DateTime string)  
 ----------------Response:-  
----------------------------Body:  
+---------------------Body:  
 ---------------------------None  
-----------------Status-  
+---------------------Status-  
 ---------------------------200-OK if the request is successful  
 
 > **API: Can get all the booked calls**  
@@ -85,14 +85,14 @@ Method: GET
 ----------------Request:-  
 ---------------------------None  
 ----------------Response:-  
----------------------------Body:  
+---------------------Body:  
 ---------------------------An array of advisor objects with each object having  
 --------------------------------Advisor Name  
 --------------------------------Advisor Profile Pic  
 --------------------------------Advisor Id  
 --------------------------------Booking time  
 --------------------------------Booking id  
-----------------Status-  
+---------------------Status-  
 ---------------------------200-OK if the request is successful  
 
 ### Extra Notes
