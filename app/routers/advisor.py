@@ -13,25 +13,33 @@ router = APIRouter(
 @router.post("/", status_code=status.HTTP_201_CREATED, response_class=HTMLResponse)
 def create_advisor(advisor: schemas.AdvisorCreate, db: Session = Depends(get_db)):
 
+    #Check if advisor present
+    is_advisor =   db.query(models.Advisor).filter(models.Advisor.name == advisor.name).first()
+    # print(is_advisor.name)
+    # print(type(is_advisor))
+    try:
+        if is_advisor.name == advisor.name:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT,
+                                detail=f"Advisor {advisor.name} already exists")
+    except AttributeError:
 
-    # print(advisor.dict())    
-    new_advisor = models.Advisor(**advisor.dict())  # Unpack the post.dict() and pass this way it can be used to pass multiple arguments
-    db.add(new_advisor)  # Add new entries to data base
-    db.commit()  # Commit added changes else the data is not committed
-    db.refresh(new_advisor) # Retrieve new post 
-    # return  new_advisor
-    return f"""
-    <html>
-        <head>
-            <title>Successfull Added New Advisor</title>
-        </head>
-        <body>
-            <h1>{new_advisor.name} was added</h1>
-            <img src={new_advisor.image_url} alt="alternatetext">
-            <h2>Get all the Advice you need to become a Super Hero</h2>
-        </body>
-    </html>
-    """
+        # print(advisor.name)    
+        new_advisor = models.Advisor(**advisor.dict())  # Unpack the post.dict() and pass this way it can be used to pass multiple arguments
+        db.add(new_advisor)  # Add new entries to data base
+        db.commit()  # Commit added changes else the data is not committed
+        db.refresh(new_advisor) # Retrieve new post 
+        # return  new_advisor
+        return f"""
+        <html>
+            <head>
+                <title>Success</title>
+            </head>
+            <body>
+                <h1>{new_advisor.name} was added as an Advisor</h1>
+                <img src={new_advisor.image_url} width="400" height="500" />
+            </body>
+        </html>
+        """
 
 # Get all advisors
 # @router.get('/{id}', response_model= schemas.UserOut)
