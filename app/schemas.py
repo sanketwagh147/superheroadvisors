@@ -8,11 +8,6 @@ from pydantic.types import conint
 class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
-
-
-
-
-
     
 class AdvisorOut(BaseModel):
     pass
@@ -24,3 +19,5 @@ class AdvisorOut(BaseModel):
     class Config:
         orm_mode = True
 
+# class Admin(BaseModel):
+#     pass
