@@ -20,7 +20,8 @@ def create_advisor(advisor: schemas.AdvisorCreate, db: Session = Depends(get_db)
     try:
         if is_advisor.name == advisor.name:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT,
-                                detail=f"Advisor {advisor.name} already exists")
+                                detail= """ <html><body><h1>Error: Advisor already Added</h1> </body> </html>""")
+
     except AttributeError:
 
         # print(advisor.name)    
