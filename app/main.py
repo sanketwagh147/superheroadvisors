@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # Import Routes to main
-from .routers import root, advisor, admin
+from .routers import root, advisor, admin, user
 ## Temp imports 
 
 
@@ -15,3 +15,4 @@ app = FastAPI()  # creates a new instance of FastAPI
 app.include_router(root.router)  # Route to root
 app.include_router(admin.router)  # Route to admin
 app.include_router(advisor.router)  # Route to advisor
+app.include_router(user.router)  # Route to advisor

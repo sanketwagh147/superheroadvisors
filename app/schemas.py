@@ -32,11 +32,10 @@ class UserLogin(BaseModel):
     name: str
     email: EmailStr
     password: str
-    created_at: datetime  # optional for asignment
 
-class UserLoginOut(BaseModel):
-    id: int
-    token : str
+# class UserLoginOut(BaseModel):
+#     name: str
+#     token : str
 
     class Config:  # converts to pydantic model 
         orm_mode = True

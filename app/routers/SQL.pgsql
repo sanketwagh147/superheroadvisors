@@ -5,6 +5,7 @@
 
 select * from advisors;
 select * from admin;
+select * from users;
 
 INSERT INTO admin(name, image_url)
 VALUES
