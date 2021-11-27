@@ -7,7 +7,8 @@ from app.config import settings
 
 from alembic import context
 
-from app.models import Base   # important to connet
+from app.models import Base   # important to connect to 
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

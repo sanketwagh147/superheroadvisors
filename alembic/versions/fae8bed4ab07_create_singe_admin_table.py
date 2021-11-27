@@ -1,8 +1,8 @@
-""" Creating Advisor table
+"""create singe admin table
 
-Revision ID: 25be962d8cf9
-Revises: 
-Create Date: 2021-11-25 23:08:41.097555
+Revision ID: fae8bed4ab07
+Revises: 1b269e4c47b9
+Create Date: 2021-11-27 13:24:18.762719
 
 """
 from alembic import op
@@ -10,16 +10,14 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '25be962d8cf9'
-down_revision = None
+revision = 'fae8bed4ab07'
+down_revision = '1b269e4c47b9'
 branch_labels = None
 depends_on = None
 
 
-
-
 def upgrade():
-    op.create_table("advisors",
+    op.create_table("admin",
                     sa.Column("id", sa.Integer(), nullable=False),
                     sa.Column("name", sa.String(), nullable=False),
                     sa.Column("image_url", sa.String(length=255), nullable=False),
@@ -32,5 +30,5 @@ def upgrade():
 
 
 def downgrade():
-    op.drop_table("advisors")
+    op.drop_table("admin")
     pass

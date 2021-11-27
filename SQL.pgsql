@@ -14,3 +14,5 @@ VALUES
 DELETE FROM admin;
 
 DELETE FROM users;
+
+drop table alembic_version;
