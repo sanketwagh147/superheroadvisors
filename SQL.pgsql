@@ -1,6 +1,6 @@
 DELETE FROM advisors
-WHERE id BETWEEN 4 AND 6 ; 
-
+WHERE name = 'Doctor Strange'
+-- WHERE id BETWEEN 4 AND 6 ; 
 
 DELETE FROM users
 WHERE id BETWEEN 23 AND 24 ; 

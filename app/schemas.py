@@ -9,12 +9,15 @@ class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
     
+
 class AdvisorOut(BaseModel):
     pass
-    # id: int
-    # name : str # Optional for assignment
+
+class AdvisorsOut(BaseModel):
+    id: int
+    name : str # Optional for assignment
     # created_at: datetime  # Optional for assignment
-    # image_url: str
+    image_url: str
 
     class Config:
         orm_mode = True
@@ -51,3 +54,6 @@ class UserLogin(BaseModel):
 class UserLoginOut(BaseModel):
     id: int
     token: str
+
+class TokenData(BaseModel):
+    id: Optional[str]
