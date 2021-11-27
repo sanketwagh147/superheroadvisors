@@ -1,7 +1,9 @@
 DELETE FROM advisors
-WHERE id BETWEEN 21 AND 23 ; 
+WHERE id BETWEEN 4 AND 6 ; 
 
 
+DELETE FROM users
+WHERE id BETWEEN 23 AND 24 ; 
 
 select * from advisors;
 select * from admin;
