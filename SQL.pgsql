@@ -2,12 +2,12 @@ DELETE FROM advisors
 WHERE name = 'Doctor Strange'
 -- WHERE id BETWEEN 4 AND 6 ; 
 
-DELETE FROM users
-WHERE id BETWEEN 23 AND 24 ; 
+DELETE FROM users WHERE id BETWEEN 23 AND 24 ; 
 
-select * from advisors;
-select * from admin;
-select * from users;
+SELECT * from advisors;
+
+SELECT * from admin;
+SELECT * from users;
 
 INSERT INTO admin(name, image_url)
 VALUES
@@ -15,7 +15,6 @@ VALUES
 
 DELETE FROM admin;
 
-DELETE FROM users
-where id = 1 or id >2;
+DELETE FROM users WHERE id = 1 or id > 2 ;
 
-drop table alembic_version;
+DROP TABLE alembic_version ;
