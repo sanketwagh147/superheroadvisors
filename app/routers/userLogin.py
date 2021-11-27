@@ -11,8 +11,7 @@ router = APIRouter(
 
 # Login first time 
 @router.post("/", response_model=schemas.UserLoginOut)
-def user_login(user_credentials: schemas.UserLogin= Depends(), db: Session = Depends(database.get_db)):
-    print("____________________________________________________________________________________________________")
+def user_login(user_credentials: schemas.UserLogin , db: Session = Depends(database.get_db)):
     # check if user email in database
     user = db.query(models.User).filter(models.User.email == user_credentials.email).first()  # username 
 
@@ -20,7 +19,6 @@ def user_login(user_credentials: schemas.UserLogin= Depends(), db: Session = Dep
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Invalid Credentials")
     
-    print("___________________END_____________________________________________________________________________")
     # Verify the user entered password and verify using function created  in utils
     if not utils.verify(user_credentials.password, user.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Invalid Credentials")
