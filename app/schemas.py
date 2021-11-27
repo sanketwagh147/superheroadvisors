@@ -37,7 +37,7 @@ class UserLogin(BaseModel):
 
 class UserLoginOut(BaseModel):
     id: int
-    name: str
+    name: str    # Optional for assignment
     email: str   # optional 
     token : str
 
