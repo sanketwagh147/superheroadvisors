@@ -13,6 +13,7 @@ VALUES
 
 DELETE FROM admin;
 
-DELETE FROM users;
+DELETE FROM users
+where id = 1 or id >2;
 
 drop table alembic_version;

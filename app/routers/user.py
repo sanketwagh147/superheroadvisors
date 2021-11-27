@@ -10,13 +10,22 @@ router = APIRouter(
 
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserLoginOut)
 def register_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
 
-    #hash the password - user.password using hash function from utils library
+    # Check if user already exist
+    user_id = db.query(models.User.id).filter(models.User.email == user.email).first()
+    if user_id:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT,
+                        detail= f"This user with user id:{user_id[0]} already exist please login") 
+
+    # If user does not exists then start user creation process
+
+    # hash the password - user.password using hash function from utils library
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
-    
+
+    # Create access token
     access_token = oauth.create_access_token(data={"email": user.email})
 
     
@@ -24,7 +33,11 @@ def register_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
     db.add(new_user)  # Add new users to database
     db.commit()  # Commit added changes else the data is not committed
     db.refresh(new_user) # Retrieve new post 
-    response_body = {"name": user.name, "email": user.email, "token": access_token}
+
+    #Retrieve the new user id from database
+    user_id = db.query(models.User.id).filter(models.User.email == user.email).first()[0]
+
+    response_body = {"id":user_id, "name": user.name, "email": user.email, "token": access_token}
     return response_body
 
 # @router.get('/{id}', response_model= schemas.UserLoginOut)
