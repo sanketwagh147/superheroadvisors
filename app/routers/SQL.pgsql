@@ -1,5 +1,5 @@
--- DELETE FROM advisors
--- WHERE id BETWEEN 21 AND 23 ; 
+DELETE FROM advisors
+WHERE id BETWEEN 21 AND 23 ; 
 
 
 
@@ -12,3 +12,5 @@ VALUES
 ('Nick Fury','https://i.ibb.co/gwfjT9z/Nick-Fury.jpg');
 
 DELETE FROM admin;
+
+DELETE FROM users;
