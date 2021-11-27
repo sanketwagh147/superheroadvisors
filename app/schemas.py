@@ -30,12 +30,12 @@ class AdvisorOut(BaseModel):
 
 # User Schemas
 
-class UserLogin(BaseModel):
+class UserRegister(BaseModel):
     name: str
     email: EmailStr
     password: str
 
-class UserLoginOut(BaseModel):
+class UserRegisterOut(BaseModel):
     id: int
     name: str    # Optional for assignment
     email: str   # optional 
@@ -43,3 +43,11 @@ class UserLoginOut(BaseModel):
 
     class Config:  # converts to pydantic model 
         orm_mode = True
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserLoginOut(BaseModel):
+    id: int
+    token: str
