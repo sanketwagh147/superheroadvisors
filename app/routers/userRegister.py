@@ -10,8 +10,8 @@ router = APIRouter(
 
 # register a user
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserLoginOut)
-def register_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserRegisterOut)
+def register_user(user: schemas.UserRegister, db: Session = Depends(get_db)):
 
 	# Check if user already exist
 	user_id = db.query(models.User.id).filter(models.User.email == user.email).first()

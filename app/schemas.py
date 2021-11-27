@@ -9,16 +9,9 @@ class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
     
+
 class AdvisorOut(BaseModel):
     pass
-    # id: int
-    # name : str # Optional for assignment
-    # created_at: datetime  # Optional for assignment
-    # image_url: str
-
-    class Config:
-        orm_mode = True
-
 
 
 # Admin Schemas Not required in assignment
@@ -27,19 +20,43 @@ class AdvisorOut(BaseModel):
 #     pass
 
 
-
 # User Schemas
 
-class UserLogin(BaseModel):
+class UserRegister(BaseModel):
     name: str
     email: EmailStr
     password: str
 
-class UserLoginOut(BaseModel):
+
+class UserRegisterOut(BaseModel):
     id: int
     name: str    # Optional for assignment
     email: str   # optional 
     token : str
 
     class Config:  # converts to pydantic model 
+        orm_mode = True
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class UserLoginOut(BaseModel):
+    id: int
+    token: str
+
+
+class TokenData(BaseModel):
+    id: Optional[str]
+
+
+class AdvisorsOut(BaseModel):
+    id: int
+    name : str # Optional for assignment
+    # created_at: datetime  # Optional for assignment
+    image_url: str
+
+    class Config:
         orm_mode = True

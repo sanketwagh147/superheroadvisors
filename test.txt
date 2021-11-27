@@ -1,9 +1,0 @@
-hellow
-eheh
-adding sample text using add-content in powershell
-tet:
-fl;adsfj;af
-afljdlfjafj
-alfjajflj
-this is us
-adding last line 
