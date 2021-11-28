@@ -31,3 +31,10 @@ class User(Base):
     email = Column(String,nullable=False, unique=True)
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+
+class Booking(Base):
+    __tablename__ = "bookings"
+    id = Column(Integer, primary_key=True, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'))
+    advisor_id = Column(Integer, ForeignKey('advisors.id', ondelete='CASCADE'))
+    booking_time = Column(TIMESTAMP(timezone=True), nullable=False)
