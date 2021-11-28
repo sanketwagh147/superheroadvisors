@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+
 ## CORS middle ware lets the specified domains to connect else it will only be able to connect to local host
 from fastapi.middleware.cors import CORSMiddleware
 
 # Import Routes to main
-from .routers import root, advisor, admin, userRegister, userLogin, getAdvisors, book
+from .routers import root, advisor, admin, userRegister, userLogin, getAdvisors
 ## Temp imports 
 
 

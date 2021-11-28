@@ -40,7 +40,7 @@ def book(book :schemas.Book, db:Session = Depends(get_db), id : int = Depends(oa
 
     # if requested advisor is available modify availability status in database
     q = db.query(models.Advisor).filter(models.Advisor.id == requested_advisor).update({'status': True})
-    # ic(q.name)
+    
     # Enter booking detail in booking table
     new_booking = models.Booking(user_id= current_user_id, advisor_id= requested_advisor, booking_time=user_booking_time)
     db.add(new_booking)

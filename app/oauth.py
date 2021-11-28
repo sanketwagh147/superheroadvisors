@@ -5,7 +5,6 @@ from fastapi import Depends, status, status, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from .config import settings
-from icecream import ic
 
 oauth2_schema = OAuth2PasswordBearer(tokenUrl='/users/login')
 

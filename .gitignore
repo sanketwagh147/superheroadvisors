@@ -2,3 +2,4 @@ __pycache__
 superheroadvisor/
 .env
 venv.ps1
+.vscode/

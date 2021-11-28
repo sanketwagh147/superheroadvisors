@@ -10,24 +10,14 @@ class AdvisorCreate(BaseModel):
     image_url : str 
     status: bool = False
     
-
 class AdvisorOut(BaseModel):
     pass
 
-
-# Admin Schemas Not required in assignment
-
-# class Admin(BaseModel):
-#     pass
-
-
 # User Schemas
-
 class UserRegister(BaseModel):
     name: str
     email: EmailStr
     password: str
-
 
 class UserRegisterOut(BaseModel):
     id: int
@@ -38,23 +28,18 @@ class UserRegisterOut(BaseModel):
     class Config:  # converts to pydantic model 
         orm_mode = True
 
-
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
-
 
 class UserLoginOut(BaseModel):
     id: int
     token: str
     # token_type: str
 
-
 class TokenData(BaseModel):
     user_id : int 
     
-
-
 class AdvisorsOut(BaseModel):
     id: int
     name : str # Optional for assignment
