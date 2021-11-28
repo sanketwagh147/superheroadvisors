@@ -66,4 +66,4 @@ class AdvisorsOut(BaseModel):
 
 class Book(BaseModel):
     a_id: int
-    booking_time: str 
+    booking_time: datetime = None 

@@ -20,8 +20,8 @@ def book(book :schemas.Book, db:Session = Depends(get_db), id : int = Depends(oa
     # renaming variables 
     current_user_id = id
     requested_advisor = book.a_id
-    booking_time = book.booking_time
-
+    format = "%Y-%m-%dT%H:%M:%S.%fZ"
+    user_booking_time = book.booking_time
     # Check if user id exist
     user = db.query(models.User).filter(models.User.id == current_user_id).first()  # check if user exist 
 
@@ -31,15 +31,41 @@ def book(book :schemas.Book, db:Session = Depends(get_db), id : int = Depends(oa
 
     # If user found Check if advisor id exist
     advisor = db.query(models.Advisor).filter(models.Advisor.id == requested_advisor).first()  #query if advisor exist
-
     if not advisor:
         raise HTTPException(status_code=404, detail=f"Advisor with advisor id:{requested_advisor} not found please check advisors list")
 
     # If both uid and a_id valid check if advisor status is available
-    if advisor.status == True:  # if booking status is True proceed to booking  
+    if advisor.status == True:  # if booking status is True the requested advisor is already booked by other user 
         raise HTTPException(status_code=404, detail=f"Advisor with advisor id: {requested_advisor} is not available for booking")
 
-    return "all good"
+    # if requested advisor is available modify availibility status in database
+    q = db.query(models.Advisor).filter(models.Advisor.id == requested_advisor).update({'status': True})
+    # ic(q.name)
+    # Enter booking detail in booking table
+    new_booking = models.Booking(user_id= current_user_id, advisor_id= requested_advisor, booking_time=user_booking_time)
+    db.add(new_booking)
+    ic(q)
+    # db.commit()
+
+
+    ic(new_booking)
+    # ic(q.id)
+    # ic(q.status)
+
+    return  f"""
+                    <html>
+                        <head>
+                
+                            <title>Booking Done</title>
+                        </head>
+                        <body>
+                            <h1> Booking Successfull </h1>
+                            <h1>User with user ID: {current_user_id} has booked {advisor.name}</h1>
+                        </body>
+                    </html>
+                    """
+
+
 
 
 
