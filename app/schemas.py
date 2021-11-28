@@ -8,6 +8,7 @@ from typing import Optional
 class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
+    status: bool = False
     
 
 class AdvisorOut(BaseModel):
@@ -49,7 +50,7 @@ class UserLoginOut(BaseModel):
 
 
 class TokenData(BaseModel):
-    id: Optional[str]
+    email : Optional[str]
 
 
 class AdvisorsOut(BaseModel):

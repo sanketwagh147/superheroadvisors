@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from fastapi.responses import HTMLResponse
 from .. import models
 from ..database import get_db
-
+from ..import oauth
 
 
 #prefix sets the root so we can start from the prefix instead mentioning it over and over
@@ -15,9 +15,10 @@ router = APIRouter(
 )
 
 @router.get("/{id}/advisor",status_code=200, response_class=HTMLResponse)  # return a list of response i based on schema model
-def get_posts(db:Session = Depends(get_db)): 
+def get_posts(id: int = Depends(oauth.get_current_user), db:Session = Depends(get_db)): 
 
     advisors = db.query(models.Advisor)  
+    current_user_id = id.id
 
     advisor_list = []
     for each in advisors:
@@ -26,10 +27,10 @@ def get_posts(db:Session = Depends(get_db)):
         temp["id"] = each.id
         temp["image_url"] = each.image_url
         advisor_list.append(temp)
-    return html_string(advisor_list)
+    return html_string(advisor_list, current_user_id)
 
 
-def html_string(advisors: list):
+def html_string(advisors: list, current_user_id = int):
     all_advisors =""
     for each_advisor in advisors:
         all_advisors +=f" <h{2}>Advisor ID : {each_advisor['id']}</h{2}> "
@@ -43,6 +44,7 @@ def html_string(advisors: list):
                         </head>
                         <body>
                             <h1> All Advisors List </h1>
+                            <h1>Current User ID: {current_user_id}</h1>
                             {all_advisors}
                         </body>
                     </html>
