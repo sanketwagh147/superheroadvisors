@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 ## CORS middle ware lets the specified domains to connect else it will only be able to connect to local host
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,6 +10,15 @@ from .routers import root, advisor, admin, userRegister, userLogin, getAdvisors,
 
 app = FastAPI()  # creates a new instance of FastAPI
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,    # Middleware performs some action in beween connection
+    allow_origins=origins,   # the origins we allow the domains whihc can talk to our api
+    allow_credentials=True,
+    allow_methods=["*"],   # allow specific http methods use * to allow all
+    allow_headers=["*"],   # allow specific headers only use * to allow all 
+)
 
 # Routes to include 
 app.include_router(root.router)  # Route to root
@@ -18,4 +27,3 @@ app.include_router(advisor.router)  # Route to advisor
 app.include_router(userRegister.router)  # Route to advisor
 app.include_router(userLogin.router)  # Route to advisor
 app.include_router(getAdvisors.router)  # Route to advisor
-# app.include_router(book.router)  # Route to advisor
