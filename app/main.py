@@ -18,4 +18,4 @@ app.include_router(advisor.router)  # Route to advisor
 app.include_router(userRegister.router)  # Route to advisor
 app.include_router(userLogin.router)  # Route to advisor
 app.include_router(getAdvisors.router)  # Route to advisor
-app.include_router(book.router)  # Route to advisor
+# app.include_router(book.router)  # Route to advisor

@@ -63,3 +63,7 @@ class AdvisorsOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Book(BaseModel):
+    a_id: int
+    booking_time: str 
