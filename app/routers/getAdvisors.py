@@ -1,8 +1,7 @@
-from typing import List  # list is used for response to send back list 
 from fastapi import Depends, APIRouter
 from sqlalchemy.orm import Session
 from fastapi.responses import HTMLResponse
-from .. import models, schemas
+from .. import models
 from ..database import get_db
 
 
@@ -15,22 +14,18 @@ router = APIRouter(
     tags=["Users"]   
 )
 
-@router.get("/{id}/advisor", response_class=HTMLResponse)  # return a list of response i based on schema model
+@router.get("/{id}/advisor",status_code=200, response_class=HTMLResponse)  # return a list of response i based on schema model
 def get_posts(db:Session = Depends(get_db)): 
 
-    posts = db.query(models.Advisor)  
-    print(posts)
+    advisors = db.query(models.Advisor)  
 
     advisor_list = []
-    for each in posts:
+    for each in advisors:
         temp = {}
         temp["name"] = each.name
         temp["id"] = each.id
         temp["image_url"] = each.image_url
         advisor_list.append(temp)
-    # print("----------------------------------------------------------------------------------------------------")
-    # print(advisor_list)
-    # print("----------------------------------------------------------------------------------------------------")
     return html_string(advisor_list)
 
 
