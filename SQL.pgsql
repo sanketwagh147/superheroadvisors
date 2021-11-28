@@ -19,3 +19,7 @@ DELETE FROM admin;
 DELETE FROM users WHERE id = 1 or id > 2 ;
 
 DROP TABLE alembic_version ;
+
+UPDATE advisors
+SET status = Not status
+where id = 1;

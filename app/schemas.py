@@ -47,10 +47,12 @@ class UserLogin(BaseModel):
 class UserLoginOut(BaseModel):
     id: int
     token: str
+    # token_type: str
 
 
 class TokenData(BaseModel):
-    email : Optional[str]
+    user_id : int 
+    
 
 
 class AdvisorsOut(BaseModel):
@@ -61,3 +63,7 @@ class AdvisorsOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Book(BaseModel):
+    a_id: int
+    booking_time: datetime = None 

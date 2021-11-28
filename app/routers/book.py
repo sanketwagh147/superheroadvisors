@@ -2,7 +2,7 @@ from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
 from ..import schemas, database, models, oauth
 from sqlalchemy.orm import Session
 from datetime import datetime
-
+from icecream import ic
 # Create a router instance
 router = APIRouter(
     prefix="/user",
@@ -12,9 +12,8 @@ router = APIRouter(
 
 @router.post("/{uid}/advisor/{a_id}", status_code=200)
 def book(uid: int , a_id: int, db: Session = Depends(database.get_db)):
-    print(uid)
-    print(a_id)
-    
+    ic(uid)
+    ic(a_id)
     # Check if user id exist
     user = db.query(models.User).filter(models.User.id == uid).first()  # check if user exist 
 
