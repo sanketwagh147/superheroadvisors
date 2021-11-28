@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import TIMESTAMP
-from sqlalchemy.sql.expression import null, text   # text is requeired for server defaults timestamp
+from sqlalchemy.sql.expression import null, text   # text is required for server defaults timestamp
 from sqlalchemy.util.langhelpers import public_factory
 from .database import Base
 
