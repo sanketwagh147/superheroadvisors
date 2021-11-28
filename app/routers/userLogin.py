@@ -11,9 +11,9 @@ router = APIRouter(
 
 # Login first time 
 @router.post("/", response_model=schemas.UserLoginOut)
-def user_login(user_credentials: schemas.UserLogin , db: Session = Depends(database.get_db)):
+def user_login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(database.get_db)):
     # check if user email in database
-    user = db.query(models.User).filter(models.User.email == user_credentials.email).first()  # username 
+    user = db.query(models.User).filter(models.User.email == user_credentials.username).first()  # username 
 
     # If user not found the in raise error
     if not user:
@@ -27,3 +27,5 @@ def user_login(user_credentials: schemas.UserLogin , db: Session = Depends(datab
     access_token = oauth.create_access_token(data={"user_id": user.id})
     # Return a token
     return {"id": user.id, "token": access_token}
+
+

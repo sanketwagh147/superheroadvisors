@@ -8,6 +8,7 @@ SELECT * from advisors;
 
 SELECT * from admin;
 SELECT * from users;
+SELECT * from bookings;
 
 INSERT INTO admin(name, image_url)
 VALUES
