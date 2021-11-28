@@ -4,11 +4,11 @@ WHERE name = 'Doctor Strange'
 
 DELETE FROM users WHERE id BETWEEN 23 AND 24 ; 
 
-SELECT * from advisors;
 
 SELECT * from admin;
-SELECT * from users;
+SELECT * from advisors;
 SELECT * from bookings;
+SELECT * from users;
 
 INSERT INTO admin(name, image_url)
 VALUES

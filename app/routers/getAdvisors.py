@@ -108,7 +108,7 @@ def book(db:Session = Depends(get_db), id : int = Depends(oauth.get_current_user
 
     user_booked_advisor_list = []
 
-    query2 = db.query(models.Advisor, models.Booking).join(models.Booking, models.Booking.advisor_id == models.Advisor.id)
+    query2 = db.query(models.Advisor, models.Booking).join(models.Booking, models.Booking.advisor_id == models.Advisor.id).filter(models.Booking.user_id == current_user_id).all()
 
     for each in query2:
         temp = [each[0].name ,each[0].image_url, each[0].id, each[1].booking_time, each[1].id]
@@ -120,8 +120,8 @@ def html_string_2(user_booked_advisor_list, current_user_id):
     for each_advisor in user_booked_advisor_list:
         all_advisors +=f" <h{2}>Advisor Name: {each_advisor[0]}</h{2}> "
         all_advisors +=f" <h{2}>Advisor Id: {each_advisor[2]}</h{2}> "
-        all_advisors +=f" <h{2}>Booking Id: {each_advisor[3]}</h{2}> "
-        all_advisors +=f" <h{2}>Booking Time: {each_advisor[4]}</h{2}> "
+        all_advisors +=f" <h{2}>Booking Id: {each_advisor[4]}</h{2}> "
+        all_advisors +=f" <h{2}>Booking Time: {each_advisor[3]}</h{2}> "
         all_advisors +=f'''<img src={each_advisor[1]} width="400" height="500"">'''
 
     base_html = f"""
