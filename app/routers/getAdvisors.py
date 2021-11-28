@@ -4,8 +4,8 @@ from fastapi.responses import HTMLResponse
 from .. import models
 from ..database import get_db
 from ..import oauth
-
-
+from icecream import ic
+ic.configureOutput(includeContext=True)
 #prefix sets the root so we can start from the prefix instead mentioning it over and over
 # If prefix not give write the entire root
 router = APIRouter(
@@ -16,9 +16,12 @@ router = APIRouter(
 
 @router.get("/{id}/advisor",status_code=200, response_class=HTMLResponse)  # return a list of response i based on schema model
 def get_posts(id: int = Depends(oauth.get_current_user), db:Session = Depends(get_db)): 
-
     advisors = db.query(models.Advisor)  
+    # current_user_id = db.query(models.User)
     current_user_id = id.id
+
+
+    # ic(current_user_id)
 
     advisor_list = []
     for each in advisors:
