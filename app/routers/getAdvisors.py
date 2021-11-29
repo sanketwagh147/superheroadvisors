@@ -62,7 +62,7 @@ def book(book :schemas.Book, db:Session = Depends(get_db), id : int = Depends(oa
 
 
 # GEt all advisors 
-@router.get("/{id}/advisor",status_code=200, response_class=HTMLResponse) 
+@router.get("/{id}/advisors",status_code=200, response_class=HTMLResponse) 
 def get_advisors(id: int = Depends(oauth.get_current_user), db:Session = Depends(get_db)): 
 
     advisors = db.query(models.Advisor)  
