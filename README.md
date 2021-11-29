@@ -1,7 +1,7 @@
 # Test Assignment for Nurture Labs
 [Assignment Link Here.](assignment.md)  
-[Heroku Web App Link.](https://superhero-advisors.herokuapp.com/)  
-[API Docs.](https://superhero-advisors.herokuapp.com/docs)  
+[Heroku Web App Link.](https://superhero-advisor.herokuapp.com/)  
+[API Docs.](https://superhero-advisor.herokuapp.com/docs)  
 [Postman Collection.](https://go.postman.co/workspace/My-Workspace~1751098b-5734-48d5-8c74-1e659c4dc196/collection/18444822-6200c4c1-fd20-4cf1-ab03-a6a0634fa60c)  
 
 ___
