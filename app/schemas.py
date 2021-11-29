@@ -8,7 +8,7 @@ from typing import Optional
 class AdvisorCreate(BaseModel):
     name : str
     image_url : str 
-    status: bool = False
+    # status: bool = False
     
 class AdvisorOut(BaseModel):
     pass
