@@ -18,18 +18,19 @@ depends_on = None
 
 
 def upgrade():
-    op.create_table("advisors",
-                    sa.Column("id", sa.Integer(), nullable=False),
-                    sa.Column("name", sa.String(), nullable=False),
-                    sa.Column("image_url", sa.String(length=255), nullable=False),
-                    sa.Column("created_at", sa.TIMESTAMP(timezone=True) ,
-                            server_default=sa.text('now()'), nullable=False),
-                    sa.PrimaryKeyConstraint('id'),
-                    sa.UniqueConstraint('name')
-                    )
     pass
+    #f56b816e0d8573f75e699e0d33349e5ef16f137c82fe95da2f53469255549653 op.create_table("advisors",
+    #                 sa.Column("id", sa.Integer(), nullable=False),
+    #                 sa.Column("name", sa.String(), nullable=False),
+    #                 sa.Column("image_url", sa.String(length=255), nullable=False),
+    #                 sa.Column("created_at", sa.TIMESTAMP(timezone=True) ,
+    #                         server_default=sa.text('now()'), nullable=False),
+    #                 sa.PrimaryKeyConstraint('id'),
+    #                 sa.UniqueConstraint('name')
+    #                 )
+    # pass
 
 
 def downgrade():
-    op.drop_table("advisors")
+    # op.drop_table("advisors")
     pass

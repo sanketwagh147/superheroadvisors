@@ -17,13 +17,16 @@ depends_on = None
 
 
 def upgrade():
-    op.add_column('advisors', sa.Column(
-                                        'status', 
-                                        sa.Boolean(), 
-                                        server_default=sa.text('false'),
-                                        nullable=False 
-                                    ))
+    pass
+
+    #f56b816e0d8573f75e699e0d33349e5ef16f137c82fe95da2f53469255549653s op.add_column('advisors', sa.Column(
+    #                                     'status', 
+    #                                     sa.Boolean(), 
+    #                                     server_default=sa.text('false'),
+    #                                     nullable=False 
+    #                                 ))
 
 
 def downgrade():
-    op.drop_column('advisors', 'status')
+    pass
+    # op.drop_column('advisors', 'status')
